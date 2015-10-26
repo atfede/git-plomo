@@ -34,19 +34,22 @@
                         <?php // include_once './master/top-nav.php'; ?>
                         <?php include_once './application/views/master/top-nav-wf.php'; ?>
 
+                        <form method="post" action="../controllers/BusquedaControllerCI">
+                            <?php echo $select; ?>
+                        </form>
 
                         <!--<div class="padding">-->
                         <!--<div class="" id="map"></div>-->
-                        
+
                         <?php echo $map['html']; ?>
 
-<!--                        <form method="post" action="BusquedaControllerCI/Filtrar">
-                            <select name="tipo" id="tipo" onchange="this.form.submit();">
-                                <option value="todos" selected> Todos </option>
-                                <option value="sala_ensayo"> Salas de ensayo </option>
-                                <option value="profesor"> Profesores </option>
-                            </select> 
-                        </form>-->
+                        <!--                        <form method="post" action="BusquedaControllerCI/Filtrar">
+                                                    <select name="tipo" id="tipo" onchange="this.form.submit();">
+                                                        <option value="todos" selected> Todos </option>
+                                                        <option value="sala_ensayo"> Salas de ensayo </option>
+                                                        <option value="profesor"> Profesores </option>
+                                                    </select> 
+                                                </form>-->
 
                         <!--</div> /padding -->
                     </div>
@@ -82,6 +85,6 @@
             </div>
         </div>
         <!-- script references -->
-        
+
     </body>
 </html>

@@ -13,9 +13,10 @@
     </div>
     <nav class="collapse navbar-collapse navbar_shadow" role="navigation">
         <!--<form class="navbar-form navbar-left">-->
-        <form class="navbar-form navbar-left" action="<?php echo site_url("BusquedaControllerCI/GetServicios") ?>">
+        
+        <form class="navbar-form navbar-left" action="<?php echo site_url("BusquedaControllerCI") ?>">
             <div class="input-group input-group-sm" style="max-width:360px;">
-                <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                <input type="text" class="form-control" placeholder="Buscar" name="busqueda" id="busqueda" onchange="this.form.submit()" value="<?php echo $nombre; ?>">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
