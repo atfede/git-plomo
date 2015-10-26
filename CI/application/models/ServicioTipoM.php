@@ -15,6 +15,5 @@ class ServicioTipoM extends CI_Model{
         public static function tipos($pindex){
             return self::$tipos[$pindex];
         }
-        
 }
             
