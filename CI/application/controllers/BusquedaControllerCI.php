@@ -1,9 +1,13 @@
 <?php
 
 class BusquedaControllerCI extends CI_Controller {
+    
+        //Variables bruno
+        public $marcadores;    
+        public $SSMapa;
 
-    public function index() {
-
+    public function index() {        
+    
         $config = array();
         $config['center'] = 'auto';
         $config['onboundschanged'] = 'if (!centreGot) {
@@ -45,6 +49,9 @@ class BusquedaControllerCI extends CI_Controller {
             $marker['position'] = $infoMarker->latitud . "," . $infoMarker->longitud;
             $this->googlemaps->add_marker($marker);
         }
+        
+         $this->_Inicio();
+         $this->_AgregarMarcadores();
 
         $data['map'] = $this->googlemaps->create_map();
 
@@ -101,6 +108,42 @@ class BusquedaControllerCI extends CI_Controller {
         $data['map'] = $this->googlemaps->create_map();
 
         $this->load->view('BusquedaViewCI', $data);
+    }
+    
+    function _Inicio(){
+        $this->load->library('googlemaps');
+        $this->load->model('SSMapa');    
+        $this->load->helper('form');
+        
+        $SSMapa = SSMapa::getInstancia();
+        $this->marcadores = $SSMapa->getMarcadores();        
+    }
+    
+    function _AgregarMarcadores(){
+        foreach ($this->marcadores as $marcador) {            
+            $marker = array();
+            $marker['position'] = $marcador->getX().','.$marcador->getY();
+            $marker['animation'] = 'BOUNCE';
+            $marker['infowindow_content'] = $marcador->getNombre().' '.$marcador->getTipo();            
+            $marker['icon'] = $marcador->getImagen();            
+            $tipo = $this->input->post('tipos');
+            $nombre = "hola";//$this->input->post('busqueda');     
+            $marker['visible'] = $this->SSMapa->Filtrar($marcador,$tipo,$nombre);          
+            $this->googlemaps->add_marker($marker);              
+        }   
+        
+        //Carga select        
+        $selected = ($this->input->post('tipos'));                      
+        $js ='onChange="this.form.submit();"';
+        $options = array('todos' => 'Todos',
+                       'Sala de ensayo' => 'Sala de ensayo',
+                       'Estudio de grabación' => 'Estudio de grabación',                       
+                       'Profesor' => 'Profesores'
+            );
+        
+        
+        $data['select'] = form_dropdown('tipos', $options, $selected, $js);    
+        $data['nombre'] = $nombre;
     }
 
 }

@@ -22,7 +22,7 @@ class MapaController extends CI_Controller {
         $config['center'] = '1600 Amphitheatre Parkway in Mountain View, Santa Clara County, California';
         $config['zoom'] = 'auto';           
         $this->googlemaps->initialize($config);            
-        /*
+        
         //-- Agrega Marcadores --  
         foreach ($this->marcadores as $marcador) {            
             $marker = array();
@@ -35,7 +35,7 @@ class MapaController extends CI_Controller {
             //$marker['visible'] = $this->SSMapa->Filtrar($marcador,$tipo,$nombre);          
             $this->googlemaps->add_marker($marker);  
             
-        }   */
+        }   
         
         //-- Fin agregar marcadores --     
         $data = array();
