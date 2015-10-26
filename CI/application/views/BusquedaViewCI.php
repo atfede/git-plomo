@@ -34,10 +34,6 @@
                         <?php // include_once './master/top-nav.php'; ?>
                         <?php include_once './application/views/master/top-nav-wf.php'; ?>
 
-                        <form method="post" action="../controllers/BusquedaControllerCI">
-                            <?php echo $select; ?>
-                        </form>
-
                         <!--<div class="padding">-->
                         <!--<div class="" id="map"></div>-->
 

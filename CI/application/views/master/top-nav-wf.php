@@ -1,4 +1,4 @@
-<?php // session_start(); ?>
+<?php // session_start();    ?>
 
 <!-- top nav -->
 <div class="navbar navbar-blue navbar-static-top navbar_shadow">  
@@ -13,30 +13,23 @@
     </div>
     <nav class="collapse navbar-collapse navbar_shadow" role="navigation">
         <!--<form class="navbar-form navbar-left">-->
-        
-        <form class="navbar-form navbar-left" action="<?php echo site_url("BusquedaControllerCI") ?>">
+
+        <form method="post" class="navbar-form navbar-left" action="BusquedaControllerCI">
             <div class="input-group input-group-sm" style="max-width:360px;">
                 <input type="text" class="form-control" placeholder="Buscar" name="busqueda" id="busqueda" onchange="this.form.submit()" value="<?php echo $nombre; ?>">
                 <div class="input-group-btn">
                     <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
                 </div>
             </div>
+
+            <?php echo $select; ?>
         </form>
 
         <ul class="nav navbar-nav">
             <li>
                 <a href="../index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a>
             </li>
-            <li>
-            <!-- <a href="#postModal" role="button" data-toggle="modal"><i class="glyphicon glyphicon-plus"></i> Post</a>-->
-                <form method="post" action="<?php echo site_url("BusquedaControllerCI/FiltrarTipo") ?>">
-                    <select name="tipo" id="tipo" onchange="this.form.submit();">
-                        <option value="todos" selected> Todos </option>
-                        <option value="sala_ensayo"> Salas de ensayo </option>
-                        <option value="profesor"> Profesores </option>
-                    </select> 
-                </form>
-            </li>
+            <!--<li></li>-->
         </ul>
 
 
