@@ -17,7 +17,7 @@
         -->
         <link href="../../../responsive-calendar/0.9/css/responsive-calendar.css" rel="stylesheet" media="screen">
         <!--<script src="responsive-calendar/0.9/js/jquery.js" type="text/javascript"></script>-->
-        <script src="../../../responsive-calendar/0.9/js/responsive-calendar.js" type="text/javascript"></script>
+        <!--<script src="../../../responsive-calendar/0.9/js/responsive-calendar_new.js" type="text/javascript"></script>-->
 
     </head>
     <body>
@@ -34,8 +34,9 @@
 
                         <!--<div class="padding">-->
 
+
                         <!-- Responsive calendar - START -->
-                        <div class="responsive-calendar" id="calendar">
+                        <div class="responsive-calendar">
                             <div class="controls">
                                 <a class="pull-left" data-go="prev"><div class="btn"><i class="glyphicon glyphicon-chevron-left"></i>Anterior</div></a>
                                 <h4><span data-head-year></span> <span data-head-month></span></h4>
@@ -55,6 +56,36 @@
                             </div>
                         </div>
                         <!-- Responsive calendar - END -->
+                        <!-- Placeholder -->
+                        <div class="responsive-calendar-placeholder">
+
+                        </div>
+
+
+                        <!--                         Responsive calendar - START 
+                                                <div class="responsive-calendar" id="calendar">
+                                                    <div class="controls">
+                                                        <a class="pull-left" data-go="prev"><div class="btn"><i class="glyphicon glyphicon-chevron-left"></i>Anterior</div></a>
+                                                        <h4><span data-head-year></span> <span data-head-month></span></h4>
+                                                        <a class="pull-right" data-go="next"><div class="btn">Siguiente<i class="glyphicon glyphicon-chevron-right"></i></div></a>
+                                                    </div><hr/>
+                                                    <div class="day-headers">
+                                                        <div class="day header">Lunes</div>
+                                                        <div class="day header">Martes</div>
+                                                        <div class="day header">Miércoles</div>
+                                                        <div class="day header">Jueves</div>
+                                                        <div class="day header">Viernes</div>
+                                                        <div class="day header">Sábado</div>
+                                                        <div class="day header">Domingo</div>
+                                                    </div>
+                                                    <div class="days" data-group="days">
+                                                         the place where days will be generated 
+                                                    </div>
+                                                </div>
+                                                 Responsive calendar - END -->
+
+
+
 
                         <!--</div> /padding -->
                     </div>
@@ -92,61 +123,63 @@
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
 <!--        <script src="js/bootstrap.min.js"></script>
         <script src="js/scripts.js"></script>-->
+        <script type="text/javascript" src="../../../responsive-calendar/0.9/js/responsive-calendar_new.js"></script>
         <script>
-            $(document).ready(function () {
-//                $('.responsive-calendar').responsiveCalendar();
-//                $('#calendar').responsiveCalendar('prev');
-//                $('#calendar').responsiveCalendar('next');
-//                
-
-                $('#calendar').responsiveCalendar({
-//                    time: '2015-10',
-                    events: {
-//                    onDayClick: function (events) {
-//                        this.onDayClick(events);
-//                        alert('click');
-
-//                  "2015-12-04": {"number": count(*), "badgeClass": "badge-warning", "url": "verDiaPasandoObjetoEnVariableSession"},
-
-                        "2015-10-04": {
-                            "number": 5, "badgeClass": "badge-warning", "url": "#",
-                            "dayEvents": [
-                                {
-                                    "name": "Important meeting",
-                                    "hour": "17:30"
-                                },
-                                {
-                                    "name": "Morning meeting at coffee house",
-                                    "hour": "08:15"
-                                }
-                            ]},
-                        "2015-10-02": {"number": 3, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-05": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-03": {"number": 5, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-06": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-07": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-08": {"number": 3, "badgeClass": "badge-warning", "url": "#"},
-                        "2015-10-15": {"number": 2, "badgeClass": "badge-warning", "url": "#"}
-
-                    }
-                });
-                $('#calendar').responsiveCalendar('prev');
-                $('#calendar').responsiveCalendar('next');
-            });
-
-
-            //esto anda
 
 //            $(document).ready(function () {
-//                $(".responsive-calendar").responsiveCalendar({
-//                    time: '2015-10',
+////                $('.responsive-calendar').responsiveCalendar();
+////                $('#calendar').responsiveCalendar('prev');
+////                $('#calendar').responsiveCalendar('next');
+////                
+//
+//                $('#calendar').responsiveCalendar({
+////                    time: '2015-10',
 //                    events: {
-//                        "2015-10-21": {"number": 5, "badgeClass": "badge-warning", "url": "http://w3widgets.com/responsive-calendar"},
-//                        "2015-10-22": {"number": 1, "badgeClass": "badge-warning", "url": "http://w3widgets.com"},
-//                        "2015-10-07": {"number": 1, "badgeClass": "badge-error"},
-//                        "2015-10-14": {}}
+////                    onDayClick: function (events) {
+////                        this.onDayClick(events);
+////                        alert('click');
+//
+////                  "2015-12-04": {"number": count(*), "badgeClass": "badge-warning", "url": "verDiaPasandoObjetoEnVariableSession"},
+//
+//                        "2015-10-04": {
+//                            "number": 5, "badgeClass": "badge-warning", "url": "#",
+//                            "dayEvents": [
+//                                {
+//                                    "name": "Important meeting",
+//                                    "hour": "17:30"
+//                                },
+//                                {
+//                                    "name": "Morning meeting at coffee house",
+//                                    "hour": "08:15"
+//                                }
+//                            ]},
+//                        "2015-10-02": {"number": 3, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-05": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-03": {"number": 5, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-06": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-07": {"number": 8, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-08": {"number": 3, "badgeClass": "badge-warning", "url": "#"},
+//                        "2015-10-15": {"number": 2, "badgeClass": "badge-warning", "url": "#"}
+//
+//                    }
 //                });
+//                $('#calendar').responsiveCalendar('prev');
+//                $('#calendar').responsiveCalendar('next');
 //            });
+//
+//
+//            //esto anda
+//
+////            $(document).ready(function () {
+////                $(".responsive-calendar").responsiveCalendar({
+////                    time: '2015-10',
+////                    events: {
+////                        "2015-10-21": {"number": 5, "badgeClass": "badge-warning", "url": "http://w3widgets.com/responsive-calendar"},
+////                        "2015-10-22": {"number": 1, "badgeClass": "badge-warning", "url": "http://w3widgets.com"},
+////                        "2015-10-07": {"number": 1, "badgeClass": "badge-error"},
+////                        "2015-10-14": {}}
+////                });
+////            });
         </script>
     </body>
 </html>

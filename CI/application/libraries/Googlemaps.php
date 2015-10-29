@@ -1494,7 +1494,7 @@ class Googlemaps {
 				if(navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function(position) {
 						' . $this->map_name . '.setCenter(new google.maps.LatLng(position.coords.latitude,position.coords.longitude));
-					}, function() { alert("Unable to get your current position. Please try again. Geolocation service failed."); });
+					}, function() {' . $this->map_name . '.setCenter(new google.maps.LatLng("-34.893997", "-56.155217"));  }); //alert("Unable to get your current position. Please try again. Geolocation service failed.");
 				// Browser doesn\'t support Geolocation
 				}else{
 					alert(\'Your browser does not support geolocation.\');

@@ -38,17 +38,17 @@ class BusquedaControllerCI extends CI_Controller {
 
         $this->_Inicio();
         $this->_AgregarMarcadores();
-        
+
         $data['select'] = $this->select;
         $data['nombre'] = $this->nombre;
-        
+
         $data['map'] = $this->googlemaps->create_map();
 
         $this->load->view('BusquedaViewCI', $data);
     }
 
     function _Inicio() {
-        $this->load->library('googlemaps');
+//        $this->load->library('googlemaps');
         $this->load->model('SSMapa');
         $this->load->helper('form');
 
@@ -57,6 +57,12 @@ class BusquedaControllerCI extends CI_Controller {
     }
 
     function _AgregarMarcadores() {
+
+        $marker = array();
+        $marker['visible'] = false;
+        $this->googlemaps->add_marker($marker);
+
+
         foreach ($this->marcadores as $marcador) {
             $marker = array();
             $marker['position'] = $marcador->getX() . ',' . $marcador->getY();
@@ -64,14 +70,14 @@ class BusquedaControllerCI extends CI_Controller {
             $marker['infowindow_content'] = $marcador->getNombre() . ' ' . $marcador->getTipo();
             $marker['icon'] = $marcador->getImagen();
             $tipo = $this->input->post('tipos');
-            $this->nombre = $this->input->post('busqueda');     
+            $this->nombre = $this->input->post('busqueda');
             $marker['visible'] = $this->SSMapa->Filtrar($marcador, $tipo, $this->nombre);
             $this->googlemaps->add_marker($marker);
         }
 
         //Carga select        
         $selected = ($this->input->post('tipos'));
-        $js = 'onChange="this.form.submit();"';
+        $js = 'onChange="this.form.submit();", class="form-control"';
         $options = array('todos' => 'Todos',
             'Sala de ensayo' => 'Sala de ensayo',
             'Estudio de grabación' => 'Estudio de grabación',
@@ -79,8 +85,17 @@ class BusquedaControllerCI extends CI_Controller {
         );
 
 
-        $this->select = form_dropdown('tipos', $options, $selected, $js);        
+        $this->select = form_dropdown('tipos', $options, $selected, $js);
     }
 
-//>>>>>>> 424f5351608be19e6450de191f68b5519797a692
+
+    
+//    $this->load->model('SSCalenadario');
+//    $this->SSCalendario->get_eventos_en_dia($dia);
+//    $this->SSCalendario->get_eventos_en_mes($mes);
+//    $this->SSCalendario->get_eventos_en_anio($año);
+    
+    
+//      $this->load_model('SSCal');
+//      $this->model('SSCalendario')->get_eventos_en_dia($dia);
 }
