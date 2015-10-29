@@ -38,5 +38,9 @@ class SSReservas extends CI_Model {
         }
         $this->dias($pDia)->agregarHorario($pIni,$pFin,$pusuario,$pnombre);        
     }    
+    
+    public function displayHorarios(){
+        
+    }
 
 }

@@ -33,6 +33,10 @@ class Horario extends CI_Model{
     public function estaEnHorario($hora){
         return ($this->inicio < $hora && $hora < $this->fin);
     }
+    
+    public function tamano(){
+        return ( ($this->getFin() - $this->getInicio()) * 21);
+    }
 
 
     
