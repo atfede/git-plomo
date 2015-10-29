@@ -1,4 +1,4 @@
-<?php // session_start();    ?>
+<?php // session_start();       ?>
 
 <!-- top nav -->
 <div class="navbar navbar-blue navbar-static-top navbar_shadow">  
@@ -14,17 +14,21 @@
     <nav class="collapse navbar-collapse navbar_shadow" role="navigation">
         <!--<form class="navbar-form navbar-left">-->
 
-        <form method="post" class="navbar-form navbar-left" action="BusquedaControllerCI">
-            <div class="input-group input-group-sm" style="max-width:360px;">
-                <input type="text" class="form-control" placeholder="Buscar" name="busqueda" id="busqueda" onchange="this.form.submit()" value="<?php echo $nombre; ?>">
-                <div class="input-group-btn">
-                    <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                </div>
-            </div>
-
-            <?php echo $select; ?>
-        </form>
-
+        <ul class="nav navbar-nav">
+            <form method="post" class="navbar-form navbar-left" action="BusquedaControllerCI">
+                <li class="pull-left">
+                    <div class="input-group input-group-sm" style="max-width:360px;">
+                        <input type="text" class="form-control" placeholder="Buscar" name="busqueda" id="busqueda" onchange="this.form.submit()" value="<?php echo $nombre; ?>">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </li>
+                <li class="pull-left">
+                    <?php echo $select; ?>
+                </li>
+            </form>
+        </ul>
         <ul class="nav navbar-nav">
             <li>
                 <a href="../index.php"><i class="glyphicon glyphicon-home"></i> Inicio</a>
