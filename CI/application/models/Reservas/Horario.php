@@ -11,17 +11,17 @@
  *
  * @author LoLo
  */
-class Horario extends CI_Model{
-    
+class Horario extends CI_Model {
+
     private $inicio;
     private $fin;
-    
-    public function __construct($pini="",$pfin="") {
+
+    public function __construct($pini = "", $pfin = "") {
         parent::__construct();
         $this->inicio = $pini;
         $this->fin = $pfin;
     }
-    
+
     function getInicio() {
         return $this->inicio;
     }
@@ -29,15 +29,26 @@ class Horario extends CI_Model{
     function getFin() {
         return $this->fin;
     }
-    
-    public function estaEnHorario($hora){
-        return ($this->inicio < $hora && $hora < $this->fin);
+
+    public function setInicio($inicio) {
+        $this->inicio = $inicio;
     }
-    
-    public function tamano(){
+
+    public function setFin($fin) {
+        $this->fin = $fin;
+    }
+
+    public function estaEnHorario($hora) {
+        return ($this->inicio <= $hora && $hora <= $this->fin);
+    }
+
+    public function tamano() {
         return ( ($this->getFin() - $this->getInicio()) * 21);
     }
 
+    function esIgual($pHorario) {
+        return ($this->inicio == $pHorario->getInicio() &&
+                $this->fin == $pHorario->getFin());
+    }
 
-    
 }

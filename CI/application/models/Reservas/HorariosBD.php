@@ -11,9 +11,7 @@
  *
  * @author LoLo
  */
-class HorariosBD extends CI_Model {
-
-    private static $horarios = array();
+class HorariosBD extends CI_Model {    
 
     function __construct() {
         parent::__construct();
@@ -30,8 +28,9 @@ class HorariosBD extends CI_Model {
                     array_push($horarios, $a, $b);
                 } else if ($numero == 1) {
                     $a = new Horario("8:00", "12:00");
+                    $c = new Horario("13:00", "14:00");
                     $b = new Horario("16:00", "22:00");
-                    array_push($horarios, $a, $b);
+                    array_push($horarios, $a,$c,$b);
                 } else if ($numero == 5) {
                     $a = new Horario("8:00", "12:00");
                     array_push($horarios, $a);
