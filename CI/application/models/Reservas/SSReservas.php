@@ -14,7 +14,7 @@
 class SSReservas extends CI_Model {
 
     private static $instancia;
-    private $dias = array(); //no tiene sentido 
+    //private $dias = array(); //no tiene sentido 
 
     public static function getInstancia() {
         if (!self::$instancia instanceof self) {
@@ -27,11 +27,22 @@ class SSReservas extends CI_Model {
         parent::__construct();
         $this->load->model('Reservas/HorariosBD');
     }
-
+/*
     public function obtenerHorario($pusuario, $pnombre, $dia) {
         return HorariosBD::getHorarios($dia, $pusuario, $pnombre);
+    }*/
+    
+    public function obtenerHorario($pusuario, $pnombre, $fecha) {
+        $ret = RegistroBD::obtenerHorariosXFecha($fecha, $pusuario, $pnombre);
+        //¿Retorna null si la consuta es vacia?
+        if($ret == null){
+            $dia = date('N', strtotime($fecha));
+            $ret = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
+        }
+        return $ret;
     }
 
+    /*
     public function agregarHorario($pDia, $pIni, $pFin, $pusuario, $pnombre) {
         if ($this->dias($pDia) == null) {//no tiene sentido??
             //$this->dias($pDia) = new Dia();
@@ -46,7 +57,7 @@ class SSReservas extends CI_Model {
         for ($i = 0; $i < count($disponible); $i++) {
             $h = new Horario;
         }
-    }
+    }*/
 
     public function ingresarRegistro($pregistro, $pusuario, $pnombre) {
         $ret = false;

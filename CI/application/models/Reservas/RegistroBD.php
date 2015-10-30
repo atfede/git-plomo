@@ -24,5 +24,10 @@ class RegistroBD extends CI_Model {
     public static function insertarRgistro($pRegistro){
         
     }
+    
+    //POS: Retorna unicamente los horarios de los registros para esa fecha
+    public static function obtenerHorariosXFecha($fecha, $pusuario, $pnombre){
+        
+    }
 
 }
