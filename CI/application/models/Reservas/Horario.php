@@ -35,7 +35,7 @@ class Horario extends CI_Model{
     }
     
     public function tamano(){
-        return ( ($this->getFin() - $this->getInicio()) * 21);
+        return (($this->getFin() - $this->getInicio())); //21
     }
 
 

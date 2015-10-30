@@ -50,7 +50,7 @@
     $.fn.bdt = function (options, callback) {
 
         var settings = $.extend({
-            pageRowCount: 10,
+            pageRowCount: 100, // 10
             arrowDown: 'fa-angle-down',
             arrowUp: 'fa-angle-up'
         }, options);
