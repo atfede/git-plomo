@@ -17,7 +17,8 @@ class Registro extends CI_Model {
     private $horario;
     private $tipo;
     
-    public function __construct($fecha,$horario, $tipo) {
+    public function __construct($fecha="",$horario="", $tipo="") {
+        parent::__construct();
         $this->fecha = $fecha;
         $this->horario = $horario;
         $this->tipo = $tipo;

@@ -13,8 +13,7 @@
  */
 class SSReservas extends CI_Model {
 
-    private static $instancia;
-    //private $dias = array(); //no tiene sentido 
+    private static $instancia;    
 
     public static function getInstancia() {
         if (!self::$instancia instanceof self) {
@@ -27,48 +26,49 @@ class SSReservas extends CI_Model {
         parent::__construct();
         $this->load->model('Reservas/HorariosBD');
     }
-/*
-    public function obtenerHorario($pusuario, $pnombre, $dia) {
-        return HorariosBD::getHorarios($dia, $pusuario, $pnombre);
-    }*/
-    
+
     public function obtenerHorario($pusuario, $pnombre, $fecha) {
         $ret = RegistroBD::obtenerHorariosXFecha($fecha, $pusuario, $pnombre);
         //¿Retorna null si la consuta es vacia?
-        if($ret == null){
+        if ($ret == null) {
             $dia = date('N', strtotime($fecha));
             $ret = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
         }
         return $ret;
     }
 
-    /*
-    public function agregarHorario($pDia, $pIni, $pFin, $pusuario, $pnombre) {
-        if ($this->dias($pDia) == null) {//no tiene sentido??
-            //$this->dias($pDia) = new Dia();
-        }
-        $this->dias($pDia)->agregarHorario($pIni, $pFin, $pusuario, $pnombre);
-    }
-
-    public function displayHorarios() {
-        $disponible; //Disponibles y reservas(ordenados)
-        $retorno = array();
-
-        for ($i = 0; $i < count($disponible); $i++) {
-            $h = new Horario;
-        }
-    }*/
-
     public function ingresarRegistro($pregistro, $pusuario, $pnombre) {
         $ret = false;
         $registros = RegistroBD::obtenerXFecha($pregistro->getFecha(), $pusuario, $pnombre);
-        for ($i = 0; $i < count($registros) && !$ret; $i++) {
-            $r = $registros[i];
-            if ($r->getTipo() == 0 && $r->estaEnHorario($pregistro->getHorario())) {
-                actualizarRegistrosXIngreso($r,$pregistro);
-                $ret = true;
+        if ($registros != null) {
+            for ($i = 0; $i < count($registros) && !$ret; $i++) {
+                $r = $registros[i];
+                if ($r->getTipo() == 0 && $r->getHorario()->estaEnHorario($pregistro->getHorario())) {
+                    actualizarRegistrosXIngreso($r, $pregistro);
+                    $ret = true;
+                }
+            }
+        } else {
+            $dia = date('N', strtotime($pregistro->getFecha()));
+            $horarios = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
+            $nuevosRegistros = array();
+            for ($i = 0; $i < count($horarios) && !$ret; $i++) {
+                $h = $horarios[i];
+                $r = new Registro($pregistro->getFecha(), $h, 0);
+                if ($h->estaEnHorario($pregistro->getHorario())) {
+                    actualizarRegistrosXIngreso($r, $pregistro);
+                    $ret = true;
+                } else {
+                    array_push($nuevosRegistros, $r);
+                }
+            }
+            if ($ret) {
+                foreach ($nuevosRegistros as $nuevo) {
+                    RegistroBD::insertarRgistro($nuevo);
+                }
             }
         }
+
         return $ret;
     }
 
@@ -84,7 +84,7 @@ class SSReservas extends CI_Model {
                 $horario = new Horario($nuevo->obtenerFin(), $r->obtenerFin());
                 $nuevo2 = new Registro($r->getFecha(), $horario, 0);
                 $r->cambiarFin($nuevo->obtenerInicio());
-                RegistroBD::insertarRgistro($nuevo2);                
+                RegistroBD::insertarRgistro($nuevo2);
             }
             RegistroBD::insertarRgistro($nuevo);
         }
