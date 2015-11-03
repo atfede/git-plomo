@@ -45,5 +45,4 @@ class RegistroBD extends CI_Model {
         }
         return $data;
     }
-
 }
