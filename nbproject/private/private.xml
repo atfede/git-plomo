@@ -3,23 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/SSReservas.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/RegistroBD.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/RegistroTipo.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/views/HorariosView.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/controllers/HorariosController_1.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/Dia.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/controllers/HorariosControllerCI.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/HorariosBD.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/Registro.php</file>
-            <file>file:/C:/Users/LoLo/Desktop/Bruno/Proyecto_AP/Plomo/git-plomo/CI/application/models/Reservas/Horario.php</file>
-=======
-            <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/controllers/SetHorariosReservaController.php</file>
             <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/models/Reservas/SSReservas.php</file>
+            <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/models/Reservas/Horario.php</file>
             <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/models/Reservas/Registro.php</file>
-            <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/views/SetHorariosReservaView.php</file>
->>>>>>> 3ca23a90d124288bf6132102b923d74134256913
+            <file>file:/E:/xampp/htdocs/plomo.6te.net/CI/application/models/Reservas/RegistroBD.php</file>
         </group>
     </open-files>
 </project-private>

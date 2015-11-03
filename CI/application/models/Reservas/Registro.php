@@ -63,8 +63,4 @@ class Registro extends CI_Model {
         $this->horario->setFin($hora);
     }
     
-
-
-
-    
 }
