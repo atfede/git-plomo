@@ -39,7 +39,7 @@ class RegistroBD extends CI_Model {
     
     public static function insertarHorarioAtencion($pRegistro){
         $this->db->insert('horario_atencion', array(
-            'id_usuario' => $pRegistro->id_usuario, // conseguir id_usuario
+            'id_usuario' => $pRegistro->getUsuario(), // conseguir id_usuario
             'hora_inicio' => $pRegistro->obtenerInicio(), 
             'hora_fin' => $pRegistro->obtenerFin(), 
             'dia' => $pRegistro->getFecha()

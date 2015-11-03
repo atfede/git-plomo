@@ -16,12 +16,14 @@ class Registro extends CI_Model {
     private $fecha;     
     private $horario;
     private $tipo;
+    private $usuario;
     
-    public function __construct($fecha="",$horario="", $tipo="") {
+    public function __construct($fecha="",$horario="", $tipo="", $usuario="") {
         parent::__construct();
         $this->fecha = $fecha;
         $this->horario = $horario;
         $this->tipo = $tipo;
+        $this->usuario = $usuario;
     }
     
     public function getFecha() {
@@ -39,7 +41,12 @@ class Registro extends CI_Model {
     public function setTipo($tipo) {
         $this->tipo = $tipo;
     }
-    //Esta bien delegar get/set
+    
+    public function getUsuario() {
+        return $this->usuario;
+    }
+
+        //Esta bien delegar get/set
     function obtenerInicio() {
         return $this->horario->getInicio();
     }

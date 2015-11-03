@@ -1,17 +1,7 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of ingresarHorarioAController
- *
- * @author LoLo
- */
-class ingresarHorarioAController extends CI_Controller {
+class registrarHoraController extends CI_Controller {
 
     public function index() {
         $this->load->model('Reservas/SSReservas');
@@ -28,5 +18,4 @@ class ingresarHorarioAController extends CI_Controller {
         }
          
     }
-    
 }
