@@ -56,54 +56,23 @@
                                         </thead>
                                         <tbody>
                                             <?php
+//                                          $salida = '<tr style="display: table-row;">';
+
                                             $salida = '';
 
-                                            $cant_horarios = count($horarios);
-
-                                            $x = 0;
-
-                                            for ($h = 0; $h <= 23; $h++) {
-
-//                                            if ($h <= substr($horarios[$x]->getInicio(), 0, 2) && $h <= substr($horarios[$x + 1]->getFin(), 0, 2)) {
-//                                                $salida .= '<tr style="display: table-row;">'
-//                                                        . '<td style="background-color:blue;"></td>'
-//                                                        . '</tr>';
-//                                            }
-                                                
-                                               if ($h >= substr($horarios[$x]->getInicio(), 0, 2) && $h <= substr($horarios[$x]->getFin(), 0, 2)) {
-                                                    ?><script>
-        //                                                    alert('<?php // echo $h . " >= " . substr($horarios[$x]->getInicio(), 0, 2) . " && " . $h . " <= " . substr($horarios[$x]->getFin(), 0, 2); ?>');
-                                                </script> 
-                                                <?php
-                                                $salida .= '<tr style="display: table-row;">'
-                                                        . '<td style="<!--background-color: #ccc;-->">' . $h . ' hs' . '</td>'
-                                                        . '</tr>';
+                                            foreach ($horarios as $row) {
+                                                $salida .= '<tr style="display: table-row;"><td style="padding-top:' 
+                                                        . $row->tamano() 
+                                                        . '%; padding-bottom:' 
+                                                        . $row->tamano() . '%;">' 
+                                                        . $row->getInicio() 
+                                                        . ' - ' 
+                                                        . $row->getFin()
+                                                        . '</td></tr>';
                                             }
-
-                                            if ($h == 23) {
-//                                            if ($h == substr($horarios[$x]->getFin(), 0, 2)) {
-                                                $h = 0;
-                                                $x++;
-                                            }
-                                            if ($x == $cant_horarios) {
-                                                break;
-                                            }
-                                        }
-
-//                                      $salida .= '</tr>';
-                                        echo $salida;
-
-
-
-//                                            $salida = '';
-////                                            $salida = '<tr style="display: table-row;">';
-//
-//                                            foreach ($horarios as $row) {
-//                                                $salida .= '<tr style="display: table-row;"><td style="padding-top:' . $row->tamano() . '%; padding-bottom:' . $row->tamano() . '%;">' . $row->getInicio() . ' - ' . $row->getFin() . '</td></tr>';
-//                                            }
-////                                            $salida .= '</tr>';
-//                                            echo $salida;
-                                        ?>
+//                                            $salida .= '</tr>';
+                                            echo $salida;
+                                            ?>
 
 
 <!--<tr style="display: none;">

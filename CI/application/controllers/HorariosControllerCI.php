@@ -11,7 +11,7 @@ class HorariosControllerCI extends CI_Controller {
         $horarios = $SSReservas->obtenerHorario("0", 'sala 1', 1); //user, sala, dia
 
         $data['horarios'] = $horarios;
-        
+
         $this->load->view("HorariosView", $data);
     }
 

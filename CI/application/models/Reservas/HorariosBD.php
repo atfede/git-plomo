@@ -26,14 +26,10 @@ class HorariosBD extends CI_Model {
                     $a = new Horario("08:00", "12:00");
                     $b = new Horario("16:00", "22:00");
                     array_push($horarios, $a, $b);
-<<<<<<< HEAD
-                } else if ($numero == 1) { //xx
-                    $a = new Horario("08:00", "12:00");
-=======
-                } else if ($numero == 1) {
+                }
+                else if ($numero == 1) {
                     $a = new Horario("8:00", "12:00");
                     $c = new Horario("13:00", "14:00");
->>>>>>> fac0d343c3cb106dc337574ff82e87c22e37f3da
                     $b = new Horario("16:00", "22:00");
                     array_push($horarios, $a,$c,$b);
                 } else if ($numero == 5) {
