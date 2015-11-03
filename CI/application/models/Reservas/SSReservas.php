@@ -37,7 +37,7 @@ class SSReservas extends CI_Model {
         return $ret;
     }
 
-    public function ingresarRegistro($pregistro, $pusuario, $pnombre) {
+    public function ingresarHoraRegistrada($pregistro, $pusuario, $pnombre) {
         $ret = false;
         $registros = RegistroBD::obtenerXFecha($pregistro->getFecha(), $pusuario, $pnombre);
         if ($registros != null) {
