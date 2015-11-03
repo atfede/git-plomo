@@ -8,7 +8,7 @@ class HorariosControllerCI extends CI_Controller {
         $this->load->model('Reservas/Horario');
 
         $SSReservas = SSReservas::getInstancia();
-        $horarios = $SSReservas->obtenerHorario("0", 'sala 1', 1); //user, sala, dia
+        $horarios = $SSReservas->obtenerHorarios("0", 'sala 1', 1); //user, sala, dia
 
         $data['horarios'] = $horarios;
 

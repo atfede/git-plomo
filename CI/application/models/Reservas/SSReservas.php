@@ -14,6 +14,7 @@
 class SSReservas extends CI_Model {
 
     private static $instancia;
+    private $bd;
 
     public static function getInstancia() {
         if (!self::$instancia instanceof self) {
@@ -25,22 +26,23 @@ class SSReservas extends CI_Model {
     public function __construct() {
         parent::__construct();
         $this->load->model('Reservas/HorariosBD');
+        $this->load->model('Reservas/RegistroBD');
+        $this->bd = new RegistroBD();
     }
 
-    public function obtenerHorario($pusuario, $pnombre, $fecha) {
-        $regBD = new RegistroBD();
-        $ret = $regBD->horasRegistradasXFecha($fecha, $pusuario, $pnombre);
+    public function obtenerHorarios($pusuario, $pnombre, $fecha) {
+        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario, $pnombre); //tabla horario_atencion
         //¿Retorna null si la consuta es vacia?
         if ($ret == null) {
             $dia = date('N', strtotime($fecha));
-            $ret = HorariosBD::horariosAtencionXDia($dia, $pusuario, $pnombre);
+            $ret = $this->bd->horariosAtencionXDia($dia, $pusuario, $pnombre);
         }
         return $ret;
     }
 
     public function ingresarHoraRegistrada($pregistro, $pusuario, $pnombre) {
         $ret = false;
-        $registros = RegistroBD::obtenerXFecha($pregistro->getFecha(), $pusuario, $pnombre);
+        $registros = $this->bd->obtenerXFecha($pregistro->getFecha(), $pusuario, $pnombre);
         if ($registros != null) {
             for ($i = 0; $i < count($registros) && !$ret; $i++) {
                 $r = $registros[i];
@@ -65,7 +67,7 @@ class SSReservas extends CI_Model {
             }
             if ($ret) {
                 foreach ($nuevosRegistros as $nuevo) {
-                    RegistroBD::insertarRgistro($nuevo);
+                    $this->bd->insertarRgistro($nuevo);
                 }
             }
             return $ret;
@@ -84,17 +86,18 @@ class SSReservas extends CI_Model {
                 $horario = new Horario($nuevo->obtenerFin(), $r->obtenerFin());
                 $nuevo2 = new Registro($r->getFecha(), $horario, 0);
                 $r->cambiarFin($nuevo->obtenerInicio());
-                RegistroBD::insertarRgistro($nuevo2);
+                $this->bd->insertarRgistro($nuevo2);
             }
-            RegistroBD::insertarRgistro($nuevo);
+            $this->bd->insertarRgistro($nuevo);
         }
-        RegistroBD::modificarRegistro($r);
+        $this->bd->modificarRegistro($r);
     }
 
-    public function ingresarHorarioAtencion($pregistro, $pusuario, $pnombre) {
+    //Descomentar todo
+    public function ingresarHorarioAtencion($pregistro, $pnombre) {
         $ret = true;
         $dia = $pregistro->getFecha();
-        $HorariosAtencion = RegistroBD::horariosAtencionXDia($dia, $pusuario, $pnombre);
+        $HorariosAtencion = $bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
 
         for ($i = 0; $i < count($HorariosAtencion) && $ret; $i++) {
             $h = $HorariosAtencion[$i];
@@ -104,7 +107,7 @@ class SSReservas extends CI_Model {
             }
         }
         if ($ret) {
-            RegistroBD::insertarHorarioAtencion($pregistro);
+            $bd->insertarHorarioAtencion($pregistro);
         }
         return $ret;
     }
@@ -113,8 +116,14 @@ class SSReservas extends CI_Model {
     public function getHorariosDisponibles() {
         $regBD = new RegistroBD();
         $SSReservas = new SSReservas();
-        
+
         $ret = $regBD->setHorarios($pHoraIni, $pHoraFin, $pnombre);
+    }
+
+    //RF.11 - Determinación horarios disponibles para un servicio
+
+    public function setHorariosDisponibles() {
+        $ret = $this->bd->setHorarios($pHoraIni, $pHoraFin, $pnombre);
 
         $this->load->model('Servicio');
 

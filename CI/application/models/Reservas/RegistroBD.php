@@ -47,6 +47,8 @@ class RegistroBD extends CI_Model {
             'id_usuario' => $pRegistro->getUsuario(), // conseguir id_usuario
             'hora_inicio' => $pRegistro->obtenerInicio(),
             'hora_fin' => $pRegistro->obtenerFin(),
+            'hora_inicio' => $pRegistro->obtenerInicio(),
+            'hora_fin' => $pRegistro->obtenerFin(),
             'dia' => $pRegistro->getFecha()
         ));
     }
@@ -61,7 +63,6 @@ class RegistroBD extends CI_Model {
         ));
     }
 
-    // Es la misma función que la primera???
     //POS: Retorna unicamente los horarios de los registros para esa fecha
     public function obtenerHorariosXFecha($fecha, $pusuario, $pnombre) {
         $registros = array();
@@ -76,5 +77,6 @@ class RegistroBD extends CI_Model {
         }
         return $registros;
     }
+
 
 }
