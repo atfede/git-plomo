@@ -13,7 +13,7 @@
  */
 class SSReservas extends CI_Model {
 
-    private static $instancia;    
+    private static $instancia;
 
     public static function getInstancia() {
         if (!self::$instancia instanceof self) {
@@ -28,11 +28,11 @@ class SSReservas extends CI_Model {
     }
 
     public function obtenerHorario($pusuario, $pnombre, $fecha) {
-        $ret = RegistroBD::obtenerHorariosXFecha($fecha, $pusuario, $pnombre);
+        $ret = RegistroBD::horasRegistradasXFecha($fecha, $pusuario, $pnombre);
         //¿Retorna null si la consuta es vacia?
         if ($ret == null) {
             $dia = date('N', strtotime($fecha));
-            $ret = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
+            $ret = HorariosBD::horariosAtencionXDia($dia, $pusuario, $pnombre);
         }
         return $ret;
     }
@@ -53,7 +53,7 @@ class SSReservas extends CI_Model {
             $horarios = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
             $nuevosRegistros = array();
             for ($i = 0; $i < count($horarios) && !$ret; $i++) {
-                $h = $horarios[i];
+                $h = $horarios[$i];
                 $r = new Registro($pregistro->getFecha(), $h, 0);
                 if ($h->estaEnHorario($pregistro->getHorario())) {
                     actualizarRegistrosXIngreso($r, $pregistro);
@@ -89,6 +89,24 @@ class SSReservas extends CI_Model {
             RegistroBD::insertarRgistro($nuevo);
         }
         RegistroBD::modificarRegistro($r);
+    }
+
+    public function ingresarHorarioAtencion($pregistro, $pusuario, $pnombre) {
+        $ret = true;
+        $dia = $pregistro->getFecha();
+        $HorariosAtencion = RegistroBD::horariosAtencionXDia($dia, $pusuario, $pnombre);
+
+        for ($i = 0; $i < count($HorariosAtencion) && $ret; $i++) {
+            $h = $HorariosAtencion[$i];
+            if ($h->getHorario()->horaEnHorario($pregistro->obtenerInicio()) ||
+                    $h->getHorario()->horaEnHorario($pregistro->obtenerFin())) {
+                $ret = false;
+            }
+        }
+        if ($ret) {
+            RegistroBD::insertarHorarioAtencion($pregistro);
+        }
+        return $ret;
     }
 
 }

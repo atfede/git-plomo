@@ -13,7 +13,12 @@
  */
 class RegistroBD extends CI_Model {
 
-    public static function obtenerXFecha($fecha, $pusuario, $pnombre) {
+    //POS: retonra los registros correspondientes a los horarios de atención para ese día
+    public static function horariosAtencionXDia($dia, $pusuario, $pnombre) {
+        
+    }
+    //POS: retonra los registros correspondientes a las horas registradas para esa fecha
+    public static function horasRegistradasXFecha($fecha, $pusuario, $pnombre) {
         
     }
     
@@ -21,18 +26,19 @@ class RegistroBD extends CI_Model {
         
     }
     
-    public static function insertarRgistro($pRegistro){
-        ?><script> alert(' <?php 
+    public static function insertarHoraRgistrada($pRegistro){
+        /*?><script> alert(' <?php 
         $pRegistro->getFecha().' - '.
         $pRegistro->obtenerInicio().' - '.
         $pRegistro->obtenerFin().' - '.
         $pRegistro->getTipo().' - ';
-        ?> ');</script> <?php
+        ?> ');</script> <?php*/
     }
     
-    //POS: Retorna unicamente los horarios de los registros para esa fecha
-    public static function obtenerHorariosXFecha($fecha, $pusuario, $pnombre){
+    public static function insertarHorarioAtencion($pRegistro){
         
     }
+    
+   
 
 }
