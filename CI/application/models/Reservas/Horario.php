@@ -38,8 +38,9 @@ class Horario extends CI_Model {
         $this->fin = $fin;
     }
 
-    public function estaEnHorario($hora) {
-        return ($this->inicio <= $hora && $hora <= $this->fin);
+    public function estaEnHorario($horario) {
+        return ($this->inicio <= $horario->getInicio()
+                && $horario->getFin() <= $this->fin);
     }
 
     public function tamano() {
@@ -50,4 +51,26 @@ class Horario extends CI_Model {
         return ($this->inicio == $pHorario->getInicio() &&
                 $this->fin == $pHorario->getFin());
     }
+
+    
+    public function horaEnHorario($pHora){
+        return ($pHora>= $this->inicio &&
+                $pHora<= $this->fin);
+    }
+    
+    /*
+     private function validarHorario($pIni, $pFin) {
+        $valido = true;
+        for ($i = 0; $i < count($this->horarios) && $valido; $i++) {
+            if ($this->horarios($i)->estaEnHorario($pIni) ||
+                    $this->horarios($i)->estaEnHorario($pFin)) {
+                $valido = false;
+            }
+        }
+        return $valido;
+    }*/
+
 }
+
+
+
