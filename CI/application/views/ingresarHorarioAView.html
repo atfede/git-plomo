@@ -11,15 +11,11 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <form id="filtro" action="HorariosController" method="post">  
+        <form id="filtro" action="ingresarHorarioAController" method="post">  
             <input type="text" class="form-control" placeholder="Inicio" name="inicio" id="inicio" value="<?php echo $inicio; ?>">                                     
             <input type="text" class="form-control" placeholder="Fin" name="fin" id="fin" value="<?php echo $fin; ?>">   
             <input type="text" class="form-control" placeholder="Dia" name="dia" id="dia" value="<?php echo $dia; ?>">   
-            <input type="submit" class="form-control" value="Ingresar">
-            <?php
-            //echo $select;
-            ?>
-            
+            <input type="submit" class="form-control" value="Ingresar">  
         </form>  
     </body>
 </html>

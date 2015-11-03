@@ -67,9 +67,8 @@ class SSReservas extends CI_Model {
                     RegistroBD::insertarRgistro($nuevo);
                 }
             }
+            return $ret;
         }
-
-        return $ret;
     }
 
     private function actualizarRegistrosXIngreso($r, $nuevo) {
@@ -109,4 +108,18 @@ class SSReservas extends CI_Model {
         return $ret;
     }
 
+    /*
+      //RF.11 - Determinación horarios disponibles para un servicio
+      public function setHorariosDisponibles() {
+      $ret = RegistroBD::setHorarios($pHoraIni, $pHoraFin, $pnombre);
+
+      $this->load->model('Servicio');
+
+      $SSReservas = SSReservas::getInstancia();
+      $horarios = $SSReservas->obtenerHorario("0", 'sala 1', 1); //user, sala, dia
+
+      $data['horarios'] = $horarios;
+
+      $this->load->view("HorariosView", $data);
+      } */
 }

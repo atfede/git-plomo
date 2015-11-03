@@ -20,7 +20,12 @@ class ingresarHorarioAController extends CI_Controller {
         $horario = new Horario($this->input->post('inicio'),$this->input->post('fin'));
         $registro = new Registro($this->input->post('dia'), $horario, 0);
         
-        $SSReservas->ingresarHorarioAtencion($registro, 0, "sala 1");
+        $ingreso = $SSReservas->ingresarHorarioAtencion($registro, 0, "sala 1");
+        if($ingreso){
+            ?><script> alert('Ingreso correcto');</script> <?php
+        }else{
+            ?><script> alert('Error al ingresar');</script> <?php
+        }
          
     }
     
