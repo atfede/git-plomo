@@ -1,5 +1,4 @@
 <?php
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -30,18 +29,8 @@ class SSReservas extends CI_Model {
         $this->bd = new RegistroBD();
     }
 
-<<<<<<< HEAD
-    public function obtenerHorarios($pusuario,$fecha) {
-        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario);
-=======
-<<<<<<< HEAD
     public function obtenerHorarios($pusuario, $fecha) {
-        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario); //tabla registro
-=======
-    public function obtenerHorarios($pusuario,$fecha) {
         $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario);
->>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
         //¿Retorna null si la consuta es vacia?
         if ($ret == null) {
             $dia = date('N', strtotime($fecha));
@@ -50,9 +39,9 @@ class SSReservas extends CI_Model {
         return $ret;
     }
 
-    public function ingresarHoraRegistrada($pregistro,$pnombre) {
+    public function ingresarHoraRegistrada($pregistro, $pnombre) {
         $ret = false;
-        $registros = $this->bd->horasRegistradasXFecha($pregistro->getFecha(), $pregistro->getUsuario());       
+        $registros = $this->bd->horasRegistradasXFecha($pregistro->getFecha(), $pregistro->getUsuario());
         if ($registros != null) {
             for ($i = 0; $i < count($registros) && !$ret; $i++) {
                 $r = $registros[i];
@@ -63,16 +52,13 @@ class SSReservas extends CI_Model {
             }
         } else {
             $dia = date('N', strtotime($pregistro->getFecha()));
-            ?><script> alert ('<?php echo $dia.' '.$pregistro->getUsuario() ?>');</script><?php
-<<<<<<< HEAD
-            $horarios = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario());//Faltaría el nombre(q sala es)
-=======
+            ?><script> alert('<?php echo $dia . ' ' . $pregistro->getUsuario() ?>');</script><?php
+            $horarios = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario()); //Faltaría el nombre(q sala es)
             $horarios = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario());
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
             $nuevosRegistros = array();
-            for ($i = 0; $i < count($horarios) && !$ret; $i++) {                
+            for ($i = 0; $i < count($horarios) && !$ret; $i++) {
                 $h = $horarios[$i]->getHorario();
-                $r = new Registro($pregistro->getFecha(), $h, 0,null);
+                $r = new Registro($pregistro->getFecha(), $h, 0, null);
                 if ($h->estaEnHorario($pregistro->getHorario())) {
                     actualizarRegistrosXIngreso($r, $pregistro);
                     $ret = true;
@@ -99,7 +85,7 @@ class SSReservas extends CI_Model {
                 $r->cambiarFin($nuevo->obtenerInicio());
             } else {
                 $horario = new Horario($nuevo->obtenerFin(), $r->obtenerFin());
-                $nuevo2 = new Registro($r->getFecha(), $horario, 0,null);
+                $nuevo2 = new Registro($r->getFecha(), $horario, 0, null);
                 $r->cambiarFin($nuevo->obtenerInicio());
                 $this->bd->insertarHoraRegistrada($nuevo2);
             }
@@ -109,23 +95,12 @@ class SSReservas extends CI_Model {
     }
 
     //Descomentar todo
-<<<<<<< HEAD
-    public function ingresarHorarioAtencion($pregistro,$pnombre) {
-        $ret = true;
-        $dia = $pregistro->getFecha();        
-        $HorariosAtencion = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
-=======
+
+
     public function ingresarHorarioAtencion($pregistro, $pnombre) {
         $ret = true;
-<<<<<<< HEAD
         $dia = $pregistro->getFecha();
-        $HorariosAtencion = $bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
-=======
-        $dia = $pregistro->getFecha();        
         $HorariosAtencion = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
->>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
-
         for ($i = 0; $i < count($HorariosAtencion) && $ret; $i++) {
             $h = $HorariosAtencion[$i];
             if ($h->getHorario()->horaEnHorario($pregistro->obtenerInicio()) ||
@@ -139,7 +114,6 @@ class SSReservas extends CI_Model {
         return $ret;
     }
 
-<<<<<<< HEAD
     /*
       //RF.11 - Determinación horarios disponibles para un servicio
       public function setHorariosDisponibles() {
@@ -154,7 +128,7 @@ class SSReservas extends CI_Model {
 
       $this->load->view("HorariosView", $data);
       } */
-=======
+
     //RF.11 - Determinación horarios disponibles para un servicio
     public function getHorariosDisponibles() {
         $regBD = new RegistroBD();
@@ -171,6 +145,4 @@ class SSReservas extends CI_Model {
 //        $data['horarios'] = $horarios;
 //        $this->load->view("HorariosView", $data);
 //    }
-
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
 }
