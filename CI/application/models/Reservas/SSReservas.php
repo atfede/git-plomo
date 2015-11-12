@@ -129,13 +129,13 @@ class SSReservas extends CI_Model {
       $this->load->view("HorariosView", $data);
       } */
 
-    //RF.11 - Determinación horarios disponibles para un servicio
+    /*RF.11 - Determinación horarios disponibles para un servicio
     public function getHorariosDisponibles() {
         $regBD = new RegistroBD();
         $SSReservas = new SSReservas();
 
         $ret = $regBD->setHorarios($pHoraIni, $pHoraFin, $pnombre);
-    }
+    }*/
 
     //RF.11 - Determinación horarios disponibles para un servicio
 //    public function setHorariosDisponibles() {
