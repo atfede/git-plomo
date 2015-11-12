@@ -16,9 +16,6 @@
         <link href="../../../jQuery-Data-Table/css/jquery.bdt.css" rel="stylesheet">
         <script src="../../../jQuery-Data-Table/js/vendor/jquery.sortelements.js"></script>
 
-        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
-        <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
-        <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">-->
     </head>
     <body>
         <div class="wrapper">
@@ -38,11 +35,8 @@
                             <!--<div id="bootstrap-table">-->
                             <div class="row">
                                 <div class="col-md-8">
-<<<<<<< HEAD
                                     <h3>Horarios sala XXX</h3>
-=======
                                     <h3>Sala XXX</h3>
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
 
                                     <!-- <form class="pull-right" role="form">
                                          <div class="form-group">
@@ -65,10 +59,7 @@
                                             $salida = '';
 
                                             foreach ($registros as $row) {
-<<<<<<< HEAD
                                                 $salida .= '<tr style="display: table-row;"><td style="'
-=======
-<<<<<<< HEAD
                                                 ?><script>//alert('<?php // echo $row->getTipo(); ?>'); </script><?php
                                                 $color = '';
                                                 switch ($row->getTipo()) {
@@ -82,13 +73,8 @@
                                                         $color = '#3DBAC0';
                                                         break;
                                                 }
-                                                $salida .= '<tr style="display: table-row;">'
-                                                        . '<td style="'
-                                                        . 'background-color:' . $color . ';'
-=======
+
                                                 $salida .= '<tr style="display: table-row;"><td style="'
->>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
                                                         . ' padding-top:' . $row->getHorario()->tamano() . 'px;'
                                                         . ' padding-bottom:' . $row->getHorario()->tamano() . 'px;">'
                                                         . $row->getHorario()->getInicio()
@@ -99,21 +85,16 @@
 //                                            $salida .= '</tr>';
                                             echo $salida;
                                             ?>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
 <!--<tr style="display: none;">
     <td>200</td>
     <td>janedoe</td>
     <td>Yane</td>
     <td>Doe</td>
 </tr>-->
-<<<<<<< HEAD
+                                        <<<<<<< HEAD
 
-=======
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
+                                        =======
+                                        >>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
                                         </tbody>
                                     </table>
                                     <!--<div id="table-footer" class="row"><div class="pull-left"><form class="form-horizontal" id="page-rows-form"><label class="pull-left control-label">Entries per Page:</label><div class="pull-left"><select class="form-control"><option value="5">5</option><option value="10" selected="selected">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select></div></form></div><nav class="pull-right" id="table-nav"><ul class="pagination pull-right"><li class=""><a href="#"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li><li class=""><a>1</a></li><li class=""><a>2</a></li><li class="active"><a>3</a></li><li class=""><a>4</a></li><li class=""><a href="#"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li></ul></nav></div>-->

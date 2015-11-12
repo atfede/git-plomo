@@ -9,40 +9,6 @@ $(document).ready(function () {/* off-canvas sidebar toggle */
         $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
         $('#btnShow').toggle();
     });
-<<<<<<< HEAD
-=======
-
-//    document.getElementsByName('radiob').onclick = function () {
-////        var value = $('input[name=radioName]:checked', '#filtro').val();
-//        var value = $('input[name=radioName]:checked', 'radiob').val();
-//        alert(value);
-////        $("radiob").change(function () {
-////            alert($(this).val());
-////        });
-//    };
-
-//    document.getElementsByName('radiob').onclick = function () {
-//        $("radiob").change(function () {
-//            alert($(this).val());
-//        });
-//    };
-
-
-//    document.getElementsByName('rb').onclick = function () {
-//    
-//    document.getElementsByName('rb').onclick = function () {
-//// get list of radio buttons with name 'size'
-//        var sz = document.forms['filtro'].elements['size'];
-//
-//// loop through list
-//        for (var i = 0, len = sz.length; i < len; i++) {
-//            sz[i].onclick = function () { // assign onclick handler function to each
-//                // put clicked radio button's value in total field
-//                this.form.elements.total.value = this.value;
-//            };
-//        }
-////    };
-//    };
 
 
     $("#filtro input[name='radiob']").click(function () {
@@ -73,14 +39,6 @@ $(document).ready(function () {/* off-canvas sidebar toggle */
                 $("#day").text('Domingo');
                 break;
         }
-//        if ($('input:radio[name=radiob]:checked').val() !== "Lunes") {
-////        alert($('input:radio[name=radiob]:checked').val());
-//        }
     });
-
-
-
-
-
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
+    
 });
