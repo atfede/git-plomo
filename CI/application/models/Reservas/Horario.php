@@ -57,7 +57,7 @@ class Horario extends CI_Model {
         return ($pHora>= $this->inicio &&
                 $pHora<= $this->fin);
     }
-    
+        
     /*
      private function validarHorario($pIni, $pFin) {
         $valido = true;

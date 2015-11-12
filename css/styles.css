@@ -383,3 +383,6 @@ table.calendar{
     font-weight: bold;
     color: #00F;
 }
+
+#dv_horarios{display: none;}
+#day{font-weight: bold;}

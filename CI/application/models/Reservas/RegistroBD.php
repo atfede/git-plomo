@@ -2,15 +2,20 @@
 
 class RegistroBD extends CI_Model {
 
+    public function __construct() {
+        $this->load->model('Reservas/Horario');
+        $this->load->model('Reservas/Registro');
+    }
+
     //POS: retonra los registros correspondientes a las horas registradas para esa fecha
-    public function horasRegistradasXFecha($fecha, $pusuario, $pnombre) {
+    public function horasRegistradasXFecha($fecha, $pusuario) {
         $registros = array();
         $sql = $this->db->get_where('registro', array('fecha' => $fecha, 'id_usuario' => $pusuario));
         if ($sql->num_rows() > 0) {
             foreach ($sql->result() as $row) {
 
                 $horario = new Horario($row->hora_inicio, $row->hora_fin);
-                $reg = new Registro($row->fecha, $horario, $row->id_tipo);
+                $reg = new Registro($row->fecha, $horario, $row->id_tipo, $pusuario);
 
                 $registros[] = $reg;
             }
@@ -19,15 +24,20 @@ class RegistroBD extends CI_Model {
     }
 
     //POS: retonra los registros correspondientes a los horarios de atención para ese día
-    public function horariosAtencionXDia($fecha, $pusuario, $pnombre) { //pnombre ??
-        $data = array();
-        $sql = $this->db->get_where('registro', array('fecha' => $fecha, 'id_usuario' => $pusuario));
+    public function horariosAtencionXDia($dia, $pusuario) {
+        $registros = array();
+        $sql = $this->db->get_where('horario_atencion', array('dia' => $dia, 'id_usuario' => $pusuario));
         if ($sql->num_rows() > 0) {
             foreach ($sql->result() as $row) {
-                $data[] = $row;
+
+                $horario = new Horario($row->hora_inicio, $row->hora_fin);
+                $reg = new Registro($row->dia, $horario, 0, $row->id_usuario);
+
+                $registros[] = $reg;
+//                $data[] = $row;
             }
         }
-        return $data;
+        return $registros;
     }
 
     public function modificarRegistro($pRegistro) {
@@ -77,6 +87,5 @@ class RegistroBD extends CI_Model {
         }
         return $registros;
     }
-
 
 }

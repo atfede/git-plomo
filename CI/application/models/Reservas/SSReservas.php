@@ -30,12 +30,12 @@ class SSReservas extends CI_Model {
         $this->bd = new RegistroBD();
     }
 
-    public function obtenerHorarios($pusuario, $pnombre, $fecha) {
-        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario, $pnombre); //tabla horario_atencion
+    public function obtenerHorarios($pusuario, $fecha) {
+        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario); //tabla registro
         //¿Retorna null si la consuta es vacia?
         if ($ret == null) {
             $dia = date('N', strtotime($fecha));
-            $ret = $this->bd->horariosAtencionXDia($dia, $pusuario, $pnombre);
+            $ret = $this->bd->horariosAtencionXDia($dia, $pusuario);
         }
         return $ret;
     }
@@ -121,17 +121,12 @@ class SSReservas extends CI_Model {
     }
 
     //RF.11 - Determinación horarios disponibles para un servicio
-
-    public function setHorariosDisponibles() {
-        $ret = $this->bd->setHorarios($pHoraIni, $pHoraFin, $pnombre);
-
-        $this->load->model('Servicio');
-
-        $horarios = $SSReservas->obtenerHorario("0", 'sala 1', 1); //user, sala, dia
-
-        $data['horarios'] = $horarios;
-
-        $this->load->view("HorariosView", $data);
-    }
+//    public function setHorariosDisponibles() {
+//        $ret = $this->bd->setHorarios($pHoraIni, $pHoraFin, $pnombre);
+//        $this->load->model('Servicio');
+//        $horarios = $SSReservas->obtenerHorario("0", 'sala 1', 1); //user, sala, dia
+//        $data['horarios'] = $horarios;
+//        $this->load->view("HorariosView", $data);
+//    }
 
 }
