@@ -9,9 +9,12 @@
 =======
             <name>plomo.6te.net</name>
         </data>
+<<<<<<< HEAD
+=======
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
             <word>Inicio</word>
         </spellchecker-wordlist>
 >>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
+>>>>>>> 8eda28d0ce3b5346f137da78baaf9abe88f4a511
     </configuration>
 </project>
