@@ -30,8 +30,13 @@ class SSReservas extends CI_Model {
         $this->bd = new RegistroBD();
     }
 
+<<<<<<< HEAD
     public function obtenerHorarios($pusuario, $fecha) {
         $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario); //tabla registro
+=======
+    public function obtenerHorarios($pusuario,$fecha) {
+        $ret = $this->bd->horasRegistradasXFecha($fecha, $pusuario);
+>>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
         //¿Retorna null si la consuta es vacia?
         if ($ret == null) {
             $dia = date('N', strtotime($fecha));
@@ -40,9 +45,9 @@ class SSReservas extends CI_Model {
         return $ret;
     }
 
-    public function ingresarHoraRegistrada($pregistro, $pusuario, $pnombre) {
+    public function ingresarHoraRegistrada($pregistro,$pnombre) {
         $ret = false;
-        $registros = $this->bd->obtenerXFecha($pregistro->getFecha(), $pusuario, $pnombre);
+        $registros = $this->bd->horasRegistradasXFecha($pregistro->getFecha(), $pregistro->getUsuario());       
         if ($registros != null) {
             for ($i = 0; $i < count($registros) && !$ret; $i++) {
                 $r = $registros[i];
@@ -53,11 +58,12 @@ class SSReservas extends CI_Model {
             }
         } else {
             $dia = date('N', strtotime($pregistro->getFecha()));
-            $horarios = HorariosBD::getHorarios($dia, $pusuario, $pnombre);
+            ?><script> alert ('<?php echo $dia.' '.$pregistro->getUsuario() ?>');</script><?php
+            $horarios = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario());
             $nuevosRegistros = array();
-            for ($i = 0; $i < count($horarios) && !$ret; $i++) {
-                $h = $horarios[$i];
-                $r = new Registro($pregistro->getFecha(), $h, 0);
+            for ($i = 0; $i < count($horarios) && !$ret; $i++) {                
+                $h = $horarios[$i]->getHorario();
+                $r = new Registro($pregistro->getFecha(), $h, 0,null);
                 if ($h->estaEnHorario($pregistro->getHorario())) {
                     actualizarRegistrosXIngreso($r, $pregistro);
                     $ret = true;
@@ -67,7 +73,7 @@ class SSReservas extends CI_Model {
             }
             if ($ret) {
                 foreach ($nuevosRegistros as $nuevo) {
-                    $this->bd->insertarRgistro($nuevo);
+                    $this->bd->insertarHoraRegistrada($nuevo);
                 }
             }
             return $ret;
@@ -84,11 +90,11 @@ class SSReservas extends CI_Model {
                 $r->cambiarFin($nuevo->obtenerInicio());
             } else {
                 $horario = new Horario($nuevo->obtenerFin(), $r->obtenerFin());
-                $nuevo2 = new Registro($r->getFecha(), $horario, 0);
+                $nuevo2 = new Registro($r->getFecha(), $horario, 0,null);
                 $r->cambiarFin($nuevo->obtenerInicio());
-                $this->bd->insertarRgistro($nuevo2);
+                $this->bd->insertarHoraRegistrada($nuevo2);
             }
-            $this->bd->insertarRgistro($nuevo);
+            $this->bd->insertarHoraRegistrada($nuevo);
         }
         $this->bd->modificarRegistro($r);
     }
@@ -96,8 +102,13 @@ class SSReservas extends CI_Model {
     //Descomentar todo
     public function ingresarHorarioAtencion($pregistro, $pnombre) {
         $ret = true;
+<<<<<<< HEAD
         $dia = $pregistro->getFecha();
         $HorariosAtencion = $bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
+=======
+        $dia = $pregistro->getFecha();        
+        $HorariosAtencion = $this->bd->horariosAtencionXDia($dia, $pregistro->getUsuario(), $pnombre);
+>>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
 
         for ($i = 0; $i < count($HorariosAtencion) && $ret; $i++) {
             $h = $HorariosAtencion[$i];
@@ -107,7 +118,7 @@ class SSReservas extends CI_Model {
             }
         }
         if ($ret) {
-            $bd->insertarHorarioAtencion($pregistro);
+            $this->bd->insertarHorarioAtencion($pregistro);
         }
         return $ret;
     }

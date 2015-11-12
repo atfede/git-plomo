@@ -61,6 +61,7 @@
                                             $salida = '';
 
                                             foreach ($registros as $row) {
+<<<<<<< HEAD
                                                 ?><script>//alert('<?php // echo $row->getTipo(); ?>'); </script><?php
                                                 $color = '';
                                                 switch ($row->getTipo()) {
@@ -77,6 +78,9 @@
                                                 $salida .= '<tr style="display: table-row;">'
                                                         . '<td style="'
                                                         . 'background-color:' . $color . ';'
+=======
+                                                $salida .= '<tr style="display: table-row;"><td style="'
+>>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
                                                         . ' padding-top:' . $row->getHorario()->tamano() . 'px;'
                                                         . ' padding-bottom:' . $row->getHorario()->tamano() . 'px;">'
                                                         . $row->getHorario()->getInicio()
