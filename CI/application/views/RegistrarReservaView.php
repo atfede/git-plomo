@@ -15,6 +15,8 @@
         <script src="../../../jQuery-Data-Table/js/jquery.bdt.js"></script>        
         <link href="../../../jQuery-Data-Table/css/jquery.bdt.css" rel="stylesheet">
         <script src="../../../jQuery-Data-Table/js/vendor/jquery.sortelements.js"></script>
+        <link href="../../../jonthornton-jquery-timepicker-107ff60/jquery.timepicker.css" rel="stylesheet">
+        <script src="../../../jonthornton-jquery-timepicker-107ff60/jquery.timepicker.js"></script>
 
         <!--<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">-->
         <!--<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>-->
@@ -29,47 +31,22 @@
 
                     <!-- main right col -->
                     <div class="column col-sm-10 col-xs-11" id="main">
-
                         <?php include_once './application/views/master/top-nav.php'; ?>
 
-                        <!--<div class="padding">-->
-
                         <div class="margin-top">
-                            <!--<div id="bootstrap-table">-->
                             <div class="row">
-                                <div class="col-md-8">
-<<<<<<< HEAD
-                                    <h3>Horarios sala XXX</h3>
-=======
-                                    <h3>Sala XXX</h3>
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
-
-                                    <!-- <form class="pull-right" role="form">
-                                         <div class="form-group">
-                                                 <input class="form-control" id="search" placeholder="Search...">
-                                             </div>
-                                         </form>-->
+                                <div class="col-md-6">
                                     <table class="table table-hover table-striped bdt" id="bootstrap-table">
                                         <thead>
                                             <tr>
                                                 <th><span class="sort-element">Horarios disponibles</span><span class="sort-icon fa"></span></th>
-                                                <!--<th><span class="sort-element">Día</span><span class="sort-icon fa"></span></th>-->
-                                                <!--<th><span class="sort-element">First Name</span><span class="sort-icon fa"></span></th>-->
-                                                <!--<th><span class="sort-element">Lunes</span><span class="sort-icon fa"></span></th>-->
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-//                                          $salida = '<tr style="display: table-row;">';
-
                                             $salida = '';
 
                                             foreach ($registros as $row) {
-<<<<<<< HEAD
-                                                $salida .= '<tr style="display: table-row;"><td style="'
-=======
-<<<<<<< HEAD
-                                                ?><script>//alert('<?php // echo $row->getTipo(); ?>'); </script><?php
                                                 $color = '';
                                                 switch ($row->getTipo()) {
                                                     case 1: //'disponible'
@@ -85,10 +62,6 @@
                                                 $salida .= '<tr style="display: table-row;">'
                                                         . '<td style="'
                                                         . 'background-color:' . $color . ';'
-=======
-                                                $salida .= '<tr style="display: table-row;"><td style="'
->>>>>>> 9754ad9af97cfd27cd52374d39b49c45a66437a0
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
                                                         . ' padding-top:' . $row->getHorario()->tamano() . 'px;'
                                                         . ' padding-bottom:' . $row->getHorario()->tamano() . 'px;">'
                                                         . $row->getHorario()->getInicio()
@@ -96,46 +69,50 @@
                                                         . $row->getHorario()->getFin()
                                                         . '</td></tr>';
                                             }
-//                                            $salida .= '</tr>';
                                             echo $salida;
                                             ?>
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
-<!--<tr style="display: none;">
-    <td>200</td>
-    <td>janedoe</td>
-    <td>Yane</td>
-    <td>Doe</td>
-</tr>-->
-<<<<<<< HEAD
-
-=======
->>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
                                         </tbody>
                                     </table>
-                                    <!--<div id="table-footer" class="row"><div class="pull-left"><form class="form-horizontal" id="page-rows-form"><label class="pull-left control-label">Entries per Page:</label><div class="pull-left"><select class="form-control"><option value="5">5</option><option value="10" selected="selected">10</option><option value="15">15</option><option value="20">20</option><option value="25">25</option></select></div></form></div><nav class="pull-right" id="table-nav"><ul class="pagination pull-right"><li class=""><a href="#"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li><li class=""><a>1</a></li><li class=""><a>2</a></li><li class="active"><a>3</a></li><li class=""><a>4</a></li><li class=""><a href="#"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li></ul></nav></div>-->
                                 </div>
-                                <!--</div>-->
+
+                                <div class="col-md-4">
+                                    <!--contenido va acá-->
+                                    <h3>Ingresar Reserva</h3>
+
+                                    <form id="filtro" action="HorariosController" method="post"> 
+                                        <div class="col-md-4">
+                                            Inicio <br>
+                                            <input name="horaInicio" id="horaInicio" type="text" class="time ui-timepicker-input form-control" data-scroll-default="6:00am" autocomplete="off">
+                                        </div>
+                                        <div class="col-md-4">
+                                            Fin <br>
+                                            <input name="horaFin" id="horaFin" type="text" class="time ui-timepicker-input form-control" data-scroll-default="6:00am" autocomplete="off">
+                                        </div>
+<!--                                    <input type="text" class="form-control" placeholder="Inicio" name="inicio" id="inicio"/>
+                                        <input type="text" class="form-control" placeholder="Fin" name="fin" id="fin"/>-->
+                                        <br>
+                                        <div class="col-md-4">
+                                            <input type="submit" class="form-control" value="Reservar"/>
+                                        </div>
+                                    </form>
+
+
+                                    <!--contenido va acá-->
+                                </div>
                             </div>
                         </div>
 
-                        <!--</div> /padding -->
                     </div>
                     <!-- /main -->
 
                 </div>
             </div>
         </div>
-        <script>
-            $(document).ready(function () {
-                $('#bootstrap-table').bdt();
-                $("#search").hide();
-                $("#table-footer").hide();
-            });
-        </script>
     </body>
+    <script>
+        $(document).ready(function () {
+            $('.time').timepicker();
+        });
+    </script>
 </html>
 
