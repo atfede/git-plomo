@@ -9,6 +9,8 @@ $(document).ready(function () {/* off-canvas sidebar toggle */
         $('#xs-menu').toggleClass('visible-xs').toggleClass('hidden-xs');
         $('#btnShow').toggle();
     });
+<<<<<<< HEAD
+=======
 
 //    document.getElementsByName('radiob').onclick = function () {
 ////        var value = $('input[name=radioName]:checked', '#filtro').val();
@@ -80,4 +82,5 @@ $(document).ready(function () {/* off-canvas sidebar toggle */
 
 
 
+>>>>>>> 76e4870e7a7f37038bbac562f3f470c171b17bc1
 });

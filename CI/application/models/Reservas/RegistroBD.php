@@ -14,6 +14,11 @@ class RegistroBD extends CI_Model {
         if ($sql->num_rows() > 0) {
             foreach ($sql->result() as $row) {
 
+                $horario = new Horario($row['hora_inicio'], $row['hora_fin']);
+                $reg = new Registro($row['fecha'], $horario, $row['id_tipo']);
+
+                $registros[] = $reg;
+
                 $horario = new Horario($row->hora_inicio, $row->hora_fin);
                 $reg = new Registro($row->fecha, $horario, $row->id_tipo, $pusuario);
 
@@ -34,7 +39,6 @@ class RegistroBD extends CI_Model {
                 $reg = new Registro($row->dia, $horario, 0, $row->id_usuario);
 
                 $registros[] = $reg;
-//                $data[] = $row;
             }
         }
         return $registros;
@@ -73,14 +77,15 @@ class RegistroBD extends CI_Model {
         ));
     }
 
+    // Es la misma función que la primera???
     //POS: Retorna unicamente los horarios de los registros para esa fecha
     public function obtenerHorariosXFecha($fecha, $pusuario, $pnombre) {
         $registros = array();
         $sql = $this->db->get_where('registro', array('fecha' => $fecha, 'id_usuario' => $pusuario));
         if ($sql->num_rows() > 0) {
             foreach ($sql->result() as $row) {
-                $horario = new Horario($row->hora_inicio, $row->hora_fin);
-                $reg = new Registro($row->fecha, $horario, $row->id_tipo);
+                $horario = new Horario($row['hora_inicio'], $row['hora_fin']);
+                $reg = new Registro($row['fecha'], $horario, $row['id_tipo']);
 
                 $registros[] = $reg;
             }
